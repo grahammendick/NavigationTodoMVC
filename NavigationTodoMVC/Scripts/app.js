@@ -12,8 +12,8 @@
 	// A todo's title can be saved by clicking away. If that click results in
 	// another request then we want to ignore the first response. If we didn't
 	// ignore the first response then the second response would be cancelled by
-	// the change to url caused by the first. The tracking of a second request
-	// is tracked by this edit indicator.
+	// the change to url caused by the first. The presence of this second request
+    // is tracked by an edit flag.
     var edit = false;
 
     refreshAjax.navigating(function (req, resp) {
@@ -47,8 +47,8 @@
     });
 
     refreshAjax.updated(function (req, resp) {
-    	// When a todo is edited but no corresponding server-rendered panel is
-    	// returned the todo element must be removed from the list.
+    	// When a todo is deleted, for example, no corresponding server-rendered 
+    	// panel is returned and the todo element must be removed from the list.
     	if (req.target.getAttribute) {
 			// Get the id of the todo being edited.
         	var todoId = req.target.getAttribute('data-todo');
