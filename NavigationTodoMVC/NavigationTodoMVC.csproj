@@ -91,6 +91,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\navigation.all.min.js" />
     <Content Include="Scripts\navigation.mvc.js" />
     <Content Include="Scripts\navigation.mvc.min.js" />
     <Content Include="Web.config" />
