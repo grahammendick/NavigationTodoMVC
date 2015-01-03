@@ -5,16 +5,34 @@ using System.Web;
 
 namespace NavigationTodoMVC.Models
 {
+	/// <summary>
+	/// Todo ViewModel.
+	/// </summary>
 	public class TodoModel
 	{
+		/// <summary>
+		/// Gets or sets the new Title.
+		/// </summary>
 		public string NewTitle { get; set; }
 
+		/// <summary>
+		/// Gets or sets the todo list.
+		/// </summary>
 		public IEnumerable<Todo> Todos { get; set; }
 
+		/// <summary>
+		/// Gets or sets the number of Uncompleted items.
+		/// </summary>
 		public int ItemsLeft { get; set; }
 
+		/// <summary>
+		/// Gets or sets the number of Completed items.
+		/// </summary>
 		public int CompletedCount { get; set; }
 
+		/// <summary>
+		/// Gets an empty list indicator.
+		/// </summary>
 		public bool Empty
 		{
 			get
@@ -23,6 +41,9 @@ namespace NavigationTodoMVC.Models
 			}
 		}
 
+		/// <summary>
+		/// Gets the Toggle all status.
+		/// </summary>
 		public string ToggleAll
 		{
 			get
@@ -31,6 +52,9 @@ namespace NavigationTodoMVC.Models
 			}
 		}
 
+		/// <summary>
+		/// Gets the Toggle all text.
+		/// </summary>
 		public string ToggleAllText
 		{
 			get
@@ -39,6 +63,9 @@ namespace NavigationTodoMVC.Models
 			}
 		}
 
+		/// <summary>
+		/// Gets the Toggle all Complete indicator.
+		/// </summary>
 		public string ToggleAllComplete
 		{
 			get
@@ -47,35 +74,20 @@ namespace NavigationTodoMVC.Models
 			}
 		}
 
-		private string GetSelected(string mode)
+		/// <summary>
+		/// Gets text indicating whether the specified mode is selected.
+		/// </summary>
+		/// <param name="mode">Mode.</param>
+		/// <returns>Selected or null.</returns>
+		public string GetSelected(string mode)
 		{
 			return StateContext.Bag.mode == mode ? "selected" : null;
 		}
 
-		public string AllSelected
-		{
-			get
-			{
-				return GetSelected("all");
-			}
-		}
-
-		public string ActiveSelected
-		{
-			get
-			{
-				return GetSelected("active");
-			}
-		}
-
-		public string CompletedSelected
-		{
-			get
-			{
-				return GetSelected("completed");
-			}
-		}
-
+		/// <summary>
+		/// Determines when the todo list RefreshPanel should update. That's when the
+		/// toggle all or clear completed has been pressed or the mode has changed.
+		/// </summary>
 		public Func<HttpContextBase, NavigationData, NavigationData, bool> Changed
 		{
 			get
@@ -85,6 +97,11 @@ namespace NavigationTodoMVC.Models
 			}
 		}
 
+		/// <summary>
+		/// Determines when the surrounding RefreshPanels should update. That's always
+		/// except when a todo title's been edited. This allows a surrounding item click
+		/// to be processed when saving a todo title.
+		/// </summary>
 		public Func<HttpContextBase, NavigationData, NavigationData, bool> Refresh
 		{
 			get

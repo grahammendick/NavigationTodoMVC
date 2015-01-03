@@ -5,9 +5,9 @@
         @(Model.ItemsLeft != 1 ? "items" : "item") left
     </span>
     <ul id="filters">
-        <li class="@Model.AllSelected">@Html.RefreshLink("All", new NavigationData { { "id", "" }, { "mode", "all" } })</li>
-        <li class="@Model.ActiveSelected">@Html.RefreshLink("Active", new NavigationData { { "id", "" }, { "mode", "active" } })</li>
-        <li class="@Model.CompletedSelected">@Html.RefreshLink("Completed", new NavigationData { { "id", "" }, { "mode", "completed" } })</li>
+        <li class="@Model.GetSelected("all")">@Html.RefreshLink("All", new NavigationData { { "id", "" }, { "mode", "all" } })</li>
+        <li class="@Model.GetSelected("active")">@Html.RefreshLink("Active", new NavigationData { { "id", "" }, { "mode", "active" } })</li>
+        <li class="@Model.GetSelected("completed")">@Html.RefreshLink("Completed", new NavigationData { { "id", "" }, { "mode", "completed" } })</li>
     </ul>
     @if (Model.CompletedCount > 0) {
         using (Html.BeginRefreshForm(null, true)) {
