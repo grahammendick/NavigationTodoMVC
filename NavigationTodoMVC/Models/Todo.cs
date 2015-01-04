@@ -59,7 +59,7 @@ namespace NavigationTodoMVC.Models
 
 		/// <summary>
 		/// Determines when a todo's RefreshPanel should update. That's when the
-		/// todo has been added or the todo's editing status has changed.
+		/// todo has been added, deleted or the todo's editing status has changed.
 		/// </summary>
 		public Func<HttpContextBase, NavigationData, NavigationData, bool> Changed
 		{
