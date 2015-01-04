@@ -81,10 +81,15 @@
             el.focus();
             el.value = el.value;
 
-			// On blur the todo's title must be saved.
+    		// On blur the todo's title must be saved or the todo deleted if the
+    		// title's blank.
             el.addEventListener('blur', function (e) {
             	if (!edit) {
-            		refreshAjax.navigate({ action: 'edit', Title: el.value }, el.form);
+            		if (el.value.trim()) {
+            			refreshAjax.navigate({ action: 'edit', Title: el.value }, el.form);
+            		} else {
+            			refreshAjax.navigate({ action: 'delete' }, el.form);
+            		}
             	}
             });
 
