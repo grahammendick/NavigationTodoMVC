@@ -27,7 +27,7 @@
         if (req.target.id === 'todo-form') {
         	var newTodoId = 0;
 
-			// Locate the panel for the newly added todo.
+        	// The panel with the greatest id is for the newly added todo.
             for (var id in resp.panels) {
                 var todoId = Number(id.slice(4));
                 if (todoId && newTodoId < todoId)
@@ -53,7 +53,7 @@
 			// Get the id of the todo being edited.
         	var todoId = req.target.getAttribute('data-todo');
 
-			// Check for the todo's server-rendered panel.
+			// Check for the absence of the todo's server-rendered panel.
             if (todoId && !resp.panels['todo' + todoId]) {
             	var todo = document.getElementById('todo' + todoId);
 
@@ -72,12 +72,12 @@
     function initEdit(req) {
     	edit = false;
 
-		// Check if a todo's title is being edited
+		// Check if a todo's title is being edited.
     	var el = document.querySelector('#todo-list input[type="text"]');
 
     	if (el) {
     		// Focus to the todo being edited, setting the value moves the caret
-			// to the end of the todo title
+			// to the end of the todo title.
             el.focus();
             el.value = el.value;
 
