@@ -1,1 +1,3 @@
-console.log('This would be the main JS file.');
+document.getElementById('test').addEventListener('click', function(){
+	console.log('test');
+});
